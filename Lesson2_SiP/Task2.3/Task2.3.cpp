@@ -14,7 +14,7 @@ struct Adress {
 	int num_flat{};
 	int index{};
 };
-void printAdress(struct Adress adress1) {
+void printAdress(Adress adress1) {
 	std::cout << "Город: " << adress1.town << std::endl;
 	std::cout << "Улица: " << adress1.street << std::endl;
 	std::cout << "Номер дома: " << adress1.num_house << std::endl;

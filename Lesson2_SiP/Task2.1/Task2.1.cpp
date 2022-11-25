@@ -3,10 +3,12 @@
 
 #include <iostream>
 
+enum Month { JAN = 1, FEB, MAR, APR, MAY, YUN, YUL, AUG, SEP, OCT, NOV, DEC };
+
+
 int main(int argc, char* argv[])
 {
 	setlocale(LC_ALL, "Russian");
-	enum Month { JAN = 1, FEB, MAR, APR, MAY, YUN, YUL, AUG, SEP, OCT, NOV, DEC };
 
 	int x;
 	do {
@@ -51,10 +53,15 @@ int main(int argc, char* argv[])
 		case Month::DEC:
 			std::cout << std::endl << " Декабрь";
 			break;
-		default: std::cout << std::endl << " Неправильный номер! ";
 		}
-		if (x == 0)
-			std::cout << std::endl << " До свидания ";
+		if (x < 0 || x > 12){
+			std::cout << std::endl << "  Неправильный номер! ";
+		}
+		else {
+			if (x == 0) {
+				std::cout << std::endl << "До свидания!";
+			}
+		}
 	} while (x);
 	return 0;
 }
