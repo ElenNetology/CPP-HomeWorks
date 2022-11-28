@@ -1,4 +1,1 @@
-﻿  Task3.1.cpp
-C:\Users\123\Desktop\CPP-HomeWorks\Lesson3_Class\Task3.1\Task3.1.cpp(66): warning C4715: calculytor::set_num2: значение возвращается не при всех путях выполнения
-C:\Users\123\Desktop\CPP-HomeWorks\Lesson3_Class\Task3.1\Task3.1.cpp(56): warning C4715: calculytor::set_num1: значение возвращается не при всех путях выполнения
-  Task3.1.vcxproj -> C:\Users\123\Desktop\CPP-HomeWorks\Lesson3_Class\Task3.1\x64\Debug\Task3.1.exe
+﻿  Task3.1.vcxproj -> C:\Users\123\Desktop\CPP-HomeWorks\Lesson3_Class\Task3.1\x64\Debug\Task3.1.exe
