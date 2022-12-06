@@ -3,25 +3,23 @@
 
 #include <iostream>
 
-class cCounter
+class Counter
 {
     char otv;
 public:
-    cCounter(int _v) : counter(_v)
+    Counter(int _v) : counter(_v)
     {
         if ((_v < 0) || (_v > 999))
             std::cout << "Неправильное число\n";
     }
-        void add()
+    void add()
     {
         counter++;
     }
-
     void subtract()
     {
-       counter--;
+        counter--;
     }
-
     int get()
     {
         return counter;
@@ -34,40 +32,36 @@ int main()
 {
     setlocale(LC_CTYPE, "Russian");
     int n;
-    //char otv;
-    //std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: "; std::cin >> otv;
+    char otv;
+    std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
+    std::cin >> otv;
+
     std::cout << "Введите начальные показания счетчика: ";
     std::cin >> n;
 
-    cCounter counter(n);
-
-    while (true)
+    Counter counter(n);
+    while (otv == 'y')
     {
         char opt;
         std::cout << "Введите +, -, = или x для выхода: ";
         std::cin >> opt;
-
         switch (opt)
         {
         case '+':
             counter.add();
             break;
-
         case '-':
             counter.subtract();
             break;
-
         case '=':
             std::cout << "Показание счетчика " << counter.get() << "\n";
             break;
-
         case 'x':
-            return 0;
-
-        default:
             std::cout << "До свидания!\n";
+            return 0;
+        default:
+            break;
         }
     }
-
     return 0;
 }

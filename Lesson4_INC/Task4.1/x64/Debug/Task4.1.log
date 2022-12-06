@@ -1,3 +1,3 @@
 ﻿  Task4.1.cpp
-C:\Users\123\Desktop\CPP-HomeWorks\Lesson4_INC\Task4.1\Task4.1.cpp(27,38): error C2440: return: невозможно преобразовать "std::basic_string<char,std::char_traits<char>,std::allocator<char>>" в "int"
-C:\Users\123\Desktop\CPP-HomeWorks\Lesson4_INC\Task4.1\Task4.1.cpp(27,38): message : Для выполнения данного преобразования нет доступного оператора преобразования, определенного пользователем, или вызов оператора невозможен
+C:\Users\123\Desktop\CPP-HomeWorks\Lesson4_INC\Task4.1\Task4.1.cpp(27,37): error C2440: return: невозможно преобразовать "std::basic_string<char,std::char_traits<char>,std::allocator<char>>" в "int"
+C:\Users\123\Desktop\CPP-HomeWorks\Lesson4_INC\Task4.1\Task4.1.cpp(27,37): message : Для выполнения данного преобразования нет доступного оператора преобразования, определенного пользователем, или вызов оператора невозможен
