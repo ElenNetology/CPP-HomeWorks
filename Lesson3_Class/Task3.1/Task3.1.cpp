@@ -8,11 +8,10 @@ class calculytor
 {
     double num1, num2;
 public:
-    calculytor() {}
-    calculytor(double _num1, double _num2) 
+    calculytor()
     {
-        num1 = _num1;
-        num2 = _num2;
+       calculytor::num1 = 1;
+        calculytor::num2 = 1;
     }
     bool set_num1(double num1)
     {
@@ -73,13 +72,15 @@ int main(int argc, char** argv)
     {
         std::cout << "Введите num1: ";
         std::cin >> num1;
-        ;
         std::cout << std::endl;
+        } while (calc.set_num1(num1) == false);
+
+    do
+    {
         std::cout << "Введите num2: ";
         std::cin >> num2;
-        ;
         std::cout << std::endl;
-    } while ((calc.set_num1(num1) == false) || (calc.set_num2(num2) == false));
+    } while (calc.set_num2(num2) == false);
 
     std::cout << "num1 + num2" << "=" << calc.add() << std::endl;
     std::cout << "num1 * num2" << "=" << calc.multiply() << std::endl;

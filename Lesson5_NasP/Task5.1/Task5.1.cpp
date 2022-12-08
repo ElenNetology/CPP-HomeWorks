@@ -36,31 +36,19 @@ public:
     {
      sides_count = 3;
     }
-    
-private:
-    float mRadius;
-    float mHeight;
-};
+ private:
+    int sides_count;
+ };
 
-class Sphere final : public Shape
+class Quadrangle final : public Figure
 {
 public:
-    Sphere(float radius) : Shape("Sphere")
+    Quadrangle (int sides_count) : Figure("Quadrangle")
     {
-     if (radius <= 0)
-     throw std::invalid_argument("Error radius");
-     mRadius = radius;
+     sides_count = 4;
     }
-    void calculateArea() override
-    {
-     mArea = 4 * Pi * mRadius * mRadius;
-    }
-    void calculateVolume() override
-    {
-     mVolume = 4 / 3 * Pi * mRadius * mRadius * mRadius;
-    }
-private:
-    float mRadius;
+ private:
+     int sides_count;
 };
 
 class ShapeCreator
@@ -75,9 +63,9 @@ public:
 
 int main()
 {
-    unsigned int choice;
+    int sides_count;
     std::cout << "Количество сторон: ";
-    std::cin >> choice;
+    std::cin >> sides_count;
     ShapeCreator shapeCreator;
     Shape* shape = nullptr;
     switch (choice)

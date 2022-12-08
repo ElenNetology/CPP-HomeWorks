@@ -5,13 +5,8 @@
 
 class Counter
 {
-    char otv;
-public:
-    Counter(int _v) : counter(_v)
-    {
-        if ((_v < 0) || (_v > 999))
-            std::cout << "Неправильное число\n";
-    }
+ public:
+     
     void add()
     {
         counter++;
@@ -28,23 +23,29 @@ private:
     int counter;
 };
 
+
 int main()
 {
     setlocale(LC_CTYPE, "Russian");
-    int n;
+    int n = 1;
     char otv;
+    
     std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
     std::cin >> otv;
-
-    std::cout << "Введите начальные показания счетчика: ";
+    if (otv == 'n'){
+    int n = 1;
+    }
+    else {
+      std::cout << "Введите начальные показания счетчика: ";
     std::cin >> n;
-
-    Counter counter(n);
-    while (otv == 'y')
+    }
+    Counter counter;
+    while (true)
     {
         char opt;
         std::cout << "Введите +, -, = или x для выхода: ";
         std::cin >> opt;
+
         switch (opt)
         {
         case '+':
