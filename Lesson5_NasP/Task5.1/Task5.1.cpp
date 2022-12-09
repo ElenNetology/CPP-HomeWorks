@@ -3,115 +3,71 @@
 
 #include <iostream>
 #include <string>
-#include <stdexcept> 
-
 
 class Figure
 {
-public:
-    Figure(const std::string& name) : get_Name(name) {}
-    virtual ~Figure() {}
-
-    virtual void calculateArea() = 0;
-    virtual void calculateVolume() = 0;
-
-    int get_sides_count() const
-    {
-     return sides_count;
-    }
-    std::string getName() const
-    {
-     return get_Name;
-    }
- protected:
-    std::string get_Name;
+protected:
     int sides_count;
-    
+    std::string Name;
+
+public:
+    Figure() { }
+    Figure(int sides_count)
+    {
+        std::cout << "Фигура" << ": " << sides_count << std::endl;
+    }
+    int get_sides_count()
+    {
+        return sides_count;
+    }
+    void get_Name()
+    {
+        std::string Name = "Фигура";
+    }
 };
 
-class Triangle final : public Figure
+class Triangle : public Figure
 {
 public:
-    Triangle(int sides_count) : Figure("Triangle")
+    Triangle(int sides_count = 3) : Figure(sides_count)
     {
-     sides_count = 3;
+        std::cout << "Треугольник" << ": " << sides_count << std::endl;
     }
- private:
-    int sides_count;
- };
-
-class Quadrangle final : public Figure
-{
-public:
-    Quadrangle (int sides_count) : Figure("Quadrangle")
+    int get_sides_count()
     {
-     sides_count = 4;
+        return sides_count;
     }
- private:
-     int sides_count;
+    void get_Name()
+    {
+        std::string Name = "Треугольник";
+    }
 };
-
-class ShapeCreator
+class Quadrangle : public Figure
 {
 public:
-    template<typename T, typename... Args, typename std::enable_if<std::is_base_of<Shape, T> ::value, T> ::type* = nullptr>
-    T* createShape(Args... arg)
+    Quadrangle(int sides_count = 4) : Figure(sides_count)
     {
-     return new T(std::forward<Args>(arg)...);
+        std::cout << "Прямоугольник" << ": " << sides_count << std::endl;
+    }
+    int get_sides_count()
+    {
+        return sides_count;
+    }
+    void get_Name()
+    {
+        std::string Name = "Прямоугольник";
     }
 };
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
     int sides_count;
     std::cout << "Количество сторон: ";
-    std::cin >> sides_count;
-    ShapeCreator shapeCreator;
-    Shape* shape = nullptr;
-    switch (choice)
-    {
-    case 1:
-    {
-        try
-        {
-            float height, radius;
-            std::cout << "Enter height: ";
-            std::cin >> height;
-            std::cout << "Enter radius: ";
-            std::cin >> radius;
-            shape = shapeCreator.createShape<Cylinder>(height, radius);
-        }
-        catch (std::invalid_argument& e)
-        {
-            std::cout << e.what();
-            return -1;
-        }
-    }
-    break;
-    case 2:
-    {
-        try
-        {
-            float radius;
-            std::cout << "Enter radius: ";
-            std::cin >> radius;
-            shape = shapeCreator.createShape<Sphere>(radius);
-        }
-        catch (std::invalid_argument& e)
-        {
-            std::cout << e.what();
-            return -1;
-        }
-    }
-    break;
-    }
-    shape->calculateArea();
-    shape->calculateVolume();
-
     std::cout << std::endl;
-    std::cout << shape->getName() << " area: " << shape->getArea();
-    std::cout << std::endl;
-    std::cout << shape->getName() << " volume: " << shape->getVolume();
+    Figure figure(0);
+    Triangle triangle(3);
+    Quadrangle qudrangle(4);
 
     return 0;
 }
