@@ -2,58 +2,88 @@
 //
 
 #include <iostream>
+#include <cstring>
 #include <fstream>
 #include <string>
 
 class Adress
 {
-private:
-    std::string town;
-    std::string street;
-    std::string house;
-    std::string flat;
+    std::string town_;
+    std::string street_;
+    int house_ = 0;
+    int flat_ = 0;
+    std::string FullAd_;
 
 public:
-    Adress() {};
-    Adress(std::ifstream &address)
+    Adress(std::string town, std::string street, int house, int flat)
     {
-        address >> town;
-        address >> street;
-        address >> house;
-        address >> flat;
+        town_ = town;
+        street_ = street;
+        house_ = house;
+        flat_ = flat;
     }
-    int get_output_Adress()
+    std::string get_out_Adress()
     {
-
-       return town + street + house + flat;
+        FullAd_ = town_ + ", " + street_ + ", " + std::to_string(house_) + ", " + std::to_string(flat_);
+        return FullAd_;
     };
 };
-    int main()
+int printadress(std::string* massAdress, const int n)
+{
+    std::ofstream fileOut("out.txt", std::ios_base::trunc);
+    if (fileOut.is_open())
     {
-        setlocale(LC_ALL, "Russian");
-        int n;
-        std::ifstream in("in.txt");
-        if (!in)
-        {
-            std::cout << "Не удалось открыть файл";
-            return 0;
-        }
-        in >> n;
-        Adress* mass = new Adress[n];
-        for (int i = 0; i < n; i++)
-        {
-            mass[i] = Adress(in);
-        }
-        in.close();
-
-        std::ofstream out("out.txt");
-        out << n;
-        for (int i = n; i > 1; i--)
-        {
-            out << mass[i].get_output_Adress() << std::endl;
-        }
-        delete[] mass;
-        return 0;
+     std::cout << "Файл out.txt успешно открыт." << std::endl;
+    }
+    else {
+        std::cout << "Ошибка открытия файла" << std::endl;
+    }
+    fileOut << n << std::endl << std::endl;
+    for (int i = n - 1; i >= 0; i--)
+    {
+        fileOut << n - i << ". " << massAdress[i] << std::endl;
+    }
+    fileOut.close();
+     return static_cast<int> (n);
+};
+std::string* adress(const int n)
+{
+    std::string* adress = new std::string[n]{};
+    return adress;
+}
+void adress(std::string* adress, const int n)
+{
+    delete[] adress;
+    adress = nullptr;
+}
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+    system("chcp 1251");
+    std::ifstream fileIn("in.txt");
+    if (!fileIn)
+    {
+        std::cout << "Ошибка открытия файла in.txt." << std::endl;
+    }
+    else {
+        std::cout << "Файл in.txt успешно открыт." << std::endl;
+    }
+    int n = 0;
+    std::string town = {};
+    std::string street = {};
+    int house = 0;
+    int flat = 0;
+    fileIn >> n;
+    std::string* massAdress = adress(n);
+    for (int i = 0; i < n; i++)
+    {
+        fileIn >> town >> street >> house >> flat;
+        Adress adress(town, street, house, flat);
+        massAdress[i] = adress.get_out_Adress();
+    };
+    fileIn.close();
+    printadress(massAdress, n);
+    adress(massAdress, n);
     }
 
 
