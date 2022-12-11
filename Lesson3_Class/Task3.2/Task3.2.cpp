@@ -6,46 +6,48 @@
 class Counter
 {
  public:
-     
+    
+   void setnach (int n)
+    {
+      n = 1;
+    }; 
     void add()
     {
-        counter++;
+        count++;
     }
     void subtract()
     {
-        counter--;
+        count--;
     }
     int get()
     {
-        return counter;
+        return count;
     }
 private:
-    int counter;
+    int count;
 };
 
 
 int main()
 {
     setlocale(LC_CTYPE, "Russian");
-    int n = 1;
+    int n = 0;
     char otv;
-    
+    Counter counter;
     std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
     std::cin >> otv;
     if (otv == 'n'){
-    int n = 1;
+    counter.setnach (n);
     }
     else {
       std::cout << "Введите начальные показания счетчика: ";
     std::cin >> n;
     }
-    Counter counter;
     while (true)
     {
         char opt;
         std::cout << "Введите +, -, = или x для выхода: ";
         std::cin >> opt;
-
         switch (opt)
         {
         case '+':
@@ -63,6 +65,6 @@ int main()
         default:
             break;
         }
-    }
+     }
     return 0;
 }
