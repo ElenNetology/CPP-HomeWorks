@@ -7,7 +7,7 @@
 class Figure
 {
 protected:
-	std::string Figure = "Фигура";
+	std::string Shape = "Фигура";
 	bool checkF = false;
 	int NumberSide = 0;
 	int A = 0;
@@ -31,7 +31,7 @@ protected:
 		}
 	};
 public:
-	std::string getFigure() { return Figure; }
+	std::string getFigure() { return Shape; }
 	int getA() { return A; }
 	int getB() { return B; }
 	int getC() { return C; }
@@ -44,7 +44,7 @@ public:
 	virtual void printinfo()
 	{
 		std::cout << std::endl;
-		std::cout << Figure << ":" << std::endl;
+		std::cout << Shape << ":" << std::endl;
 		if (CheckF())
 		{
 			std::cout << "Правильная" << std::endl;
@@ -53,7 +53,7 @@ public:
 			std::cout << "Неправильная" << std::endl;
 		}
 
-		std::cout << "Количество сторон: " << NumberSide;
+		std::cout << "Количество сторон: " << NumberSide << std::endl;
 	}
 };
 class Triangle : public Figure //Класс треугольника
@@ -69,10 +69,9 @@ protected:
 		}
 	};
 public:
-
 	Triangle(int sideA, int sideB, int sideC, int angA, int angB, int angC)
 	{
-		Figure = "Треугольник";
+		Shape = "Треугольник";
 		A = sideA;
 		B = sideB;
 		C = sideC;
@@ -111,7 +110,7 @@ public:
 	rightTr(int sideA, int sideB, int sideC, int angA, int angB, int angC)
 		: Triangle(sideA, sideB, sideC, angA, angB, angC)
 	{
-		Triangle::Figure = "Прямоугольный треугольник";
+		Triangle::Shape = "Прямоугольный треугольник";
 	};
 };
 class isoscelesTr : public Triangle
@@ -132,7 +131,7 @@ public:
 	isoscelesTr(int sideA, int sideB, int sideC, int angA, int angB, int angC)
 		: Triangle(sideA, sideB, sideC, angA, angB, angC)
 	{
-		Triangle::Figure = "Равнобедренный треугольник";
+		Triangle::Shape = "Равнобедренный треугольник";
 	};
 };
 class equilateralTr : public Triangle
@@ -153,7 +152,7 @@ public:
 	equilateralTr(int sideA, int sideB, int sideC, int angA, int angB, int angC)
 		: Triangle(sideA, sideB, sideC, angA, angB, angC)
 	{
-		Triangle::Figure = "Равносторонний треугольник";
+		Triangle::Shape = "Равносторонний треугольник";
 	};
 protected:
 	bool CheckF() override
@@ -223,7 +222,7 @@ protected:
 public:
 	Quadrangle(int sideA, int sideB, int sideC, int sideD, int angA, int angB, int angC, int angD)
 	{
-		Figure = "Четырехугольник";
+		Shape = "Четырехугольник";
 		NumberSide = 4;
 		A = sideA;
 		B = sideB;
@@ -262,7 +261,7 @@ public:
 	Rect(int sideA, int sideB, int sideC, int sideD, int angA, int angB, int angC, int angD)
 		: Quadrangle(sideA, sideB, sideC, sideD, angA, angB, angC, angD)
 	{
-		Quadrangle::Figure = "Прямоугольник";
+		Quadrangle::Shape = "Прямоугольник";
 	}
 };
 
@@ -283,7 +282,7 @@ public:
 	Box(int sideA, int sideB, int sideC, int sideD, int angA, int angB, int angC, int angD)
 		: Quadrangle(sideA, sideB, sideC, sideD, angA, angB, angC, angD)
 	{
-		Quadrangle::Figure = "Квадрат";
+		Quadrangle::Shape = "Квадрат";
 	}
 };
 class Parallelogram : public Quadrangle
@@ -303,7 +302,7 @@ public:
 	Parallelogram(int sideA, int sideB, int sideC, int sideD, int angA, int angB, int angC, int angD)
 		: Quadrangle(sideA, sideB, sideC, sideD, angA, angB, angC, angD)
 	{
-		Quadrangle::Figure = "Параллелограмм";
+		Quadrangle::Shape = "Параллелограмм";
 	}
 };
 class Romb : public Quadrangle
@@ -323,9 +322,14 @@ public:
 	Romb(int sideA, int sideB, int sideC, int sideD, int angA, int angB, int angC, int angD)
 		: Quadrangle(sideA, sideB, sideC, sideD, angA, angB, angC, angD)
 	{
-		Quadrangle::Figure = "Ромб";
+		Quadrangle::Shape = "Ромб";
 	}
 };
+void printinfo(Figure& figure)
+{
+	figure.printinfo();
+}
+
 int main()
 {
 	setlocale(LC_ALL, "Russian");
@@ -340,6 +344,7 @@ int main()
 	Box Box1(50, 50, 50, 50, 90, 90, 90, 90);
 	Parallelogram Parallelogram1(5, 8, 10, 41, 15, 35, 98, 50);
 	Romb Romb1(5, 8, 10, 10, 15, 35, 98, 50);
+	printinfo(Figure1);
 	printinfo(Tri1);
 	printinfo(rightTr1);
 	printinfo(isoscelesTr1);
