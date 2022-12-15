@@ -5,26 +5,28 @@
 
 class Counter
 {
+private:
+    int count ;
+   
  public:
-    
-   void setnach (int n)
+     
+     Counter();
+     Counter (int n) 
+     { 
+         count = n;
+     }
+    int add()
     {
-      n = 1;
-    }; 
-    void add()
-    {
-        count++;
+       return ++count;
     }
-    void subtract()
+    int subtract()
     {
-        count--;
+       return --count;
     }
     int get()
     {
         return count;
     }
-private:
-    int count;
 };
 
 
@@ -33,15 +35,15 @@ int main()
     setlocale(LC_CTYPE, "Russian");
     int n = 0;
     char otv;
-    Counter counter;
-    std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
+    auto schet = Counter(n);
+    std::cout << "Вы хотите указать начальное значение счётчика? Введите y или n: ";
     std::cin >> otv;
     if (otv == 'n'){
-    counter.setnach (n);
+    int n = 1;
     }
     else {
       std::cout << "Введите начальные показания счетчика: ";
-    std::cin >> n;
+      std::cin >> n;
     }
     while (true)
     {
@@ -51,13 +53,13 @@ int main()
         switch (opt)
         {
         case '+':
-            counter.add();
+            schet.add();
             break;
         case '-':
-            counter.subtract();
+            schet.subtract();
             break;
         case '=':
-            std::cout << "Показание счетчика " << counter.get() << "\n";
+            std::cout << "Показание счетчика " << schet.get() << "\n";
             break;
         case 'x':
             std::cout << "До свидания!\n";
