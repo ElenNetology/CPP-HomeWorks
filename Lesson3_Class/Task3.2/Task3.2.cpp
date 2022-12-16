@@ -33,18 +33,27 @@ private:
 int main()
 {
     setlocale(LC_CTYPE, "Russian");
-    int n = 0;
-    char otv;
-    auto schet = Counter(n);
-    std::cout << "Вы хотите указать начальное значение счётчика? Введите y или n: ";
-    std::cin >> otv;
-    if (otv == 'n'){
-    int n = 1;
-    }
-    else {
-      std::cout << "Введите начальные показания счетчика: ";
-      std::cin >> n;
-    }
+    char otv; 
+    int n =0; 
+    bool nach = false;
+    do
+    {
+        std::cout << std::endl << "Вы хотите указать начальное значение счётчика? Введите y или n: ";
+        std::cin >> otv;
+        std::cout << std::endl;
+       
+        if (otv == 'y' || otv == 'Y')
+        {
+            std::cout << "Введите начальное значение счётчика: ";
+            std::cin >> n;
+            nach = true;
+         }
+        else  (otv == 'n' || otv == 'N');
+        {
+            nach = true;
+        }
+    } while (!nach);
+    Counter schet (n);
     while (true)
     {
         char opt;
