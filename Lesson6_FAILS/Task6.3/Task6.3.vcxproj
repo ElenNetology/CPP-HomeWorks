@@ -127,7 +127,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="equilateralTr.cpp" />
+    <ClCompile Include="Figure.cpp" />
+    <ClCompile Include="isoscelesTr.cpp" />
+    <ClCompile Include="Parallelogram.cpp" />
+    <ClCompile Include="Print.cpp" />
+    <ClCompile Include="Quadrangle.cpp" />
+    <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="rightTr.cpp" />
+    <ClCompile Include="Romb.cpp" />
     <ClCompile Include="Task6.3.cpp" />
+    <ClCompile Include="Triangle.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="equilateralTr.h" />
+    <ClInclude Include="Figure.h" />
+    <ClInclude Include="isoscelesTr.h" />
+    <ClInclude Include="Parallelogram.h" />
+    <ClInclude Include="Print.h" />
+    <ClInclude Include="Quadrangle.h" />
+    <ClInclude Include="Rect.h" />
+    <ClInclude Include="rightTr.h" />
+    <ClInclude Include="Romb.h" />
+    <ClInclude Include="Triangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
