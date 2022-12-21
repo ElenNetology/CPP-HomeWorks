@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "Figure.h"
+
 
 class Figure
 {

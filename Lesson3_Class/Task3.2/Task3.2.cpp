@@ -34,7 +34,7 @@ int main()
 {
     setlocale(LC_CTYPE, "Russian");
     char otv; 
-    int n =0; 
+    int n =1; 
     bool nach = false;
     do
     {
