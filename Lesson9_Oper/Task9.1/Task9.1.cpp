@@ -15,6 +15,34 @@ public:
 		numerator_ = numerator;
 		denominator_ = denominator;
 	}
+	bool operator == (const Fraction& other)
+	{
+		return this->numerator_ == other.numerator_ && this->denominator_ == other.denominator_;
+	}
+	bool operator != (const Fraction& other)
+	{
+		return !(this->numerator_ == other.numerator_ && this->denominator_ == other.denominator_);
+	}
+
+	bool operator < (const Fraction& other)
+	{
+		return this->numerator_ < other.numerator_&& this->denominator_ < other.denominator_;
+	}
+
+	bool operator > (const Fraction& other)
+	{
+		return this->numerator_ > other.numerator_ && this->denominator_ > other.denominator_;
+	}
+
+	bool operator <= (const Fraction& other)
+	{
+		return this->numerator_ <= other.numerator_ && this->denominator_ <= other.denominator_;
+	}
+
+	bool operator >= (const Fraction& other)
+	{
+		return this->numerator_ >= other.numerator_ && this->denominator_ >= other.denominator_;
+	}
 };
 
 int main()

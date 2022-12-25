@@ -98,6 +98,13 @@ StyleCopReport.xml
 *.svclog
 *.scc
 
+# Files CMake
+*.sln
+*.vcxproj.filters
+*.vcxproj.user
+*.vcxproj
+
+
 # Chutzpah Test files
 _Chutzpah*
 

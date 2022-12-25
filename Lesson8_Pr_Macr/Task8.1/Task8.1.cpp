@@ -6,10 +6,19 @@
 
 
 
-#define MODE 
+#define MODE 2
 #if !defined MODE
 #error "сообщение о необходимости определить MODE"
 #endif // !
+
+int Add(double num1, double num2)
+{
+    std::cout << "Введите число 1: "; std::cin >> num1;
+    std::cout << std::endl;
+    std::cout << "Введите число 2: "; std::cin >> num2;
+    std::cout << std::endl;
+    return num1+num2;
+}
 
 int main()
 {
@@ -25,12 +34,8 @@ int main()
     
     double num1 = 0;
     double num2 = 0;
-    std::cout << "Введите число 1: "; std::cin >> num1;
-    std::cout << std::endl;
-    std::cout << "Введите число 2: "; std::cin >> num2;
-    std::cout << std::endl;
-    double add = num1+num2;
-    std::cout << std::endl << "Результат сложения: " << add << std::endl;
+      
+    std::cout << std::endl << "Результат сложения: " << Add (num1,num2) << std::endl;
      
     #endif
 
