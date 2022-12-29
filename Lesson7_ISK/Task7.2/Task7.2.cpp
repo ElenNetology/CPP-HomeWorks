@@ -1,6 +1,8 @@
 ﻿// Task6.3.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 #include <iostream>
+#include <string>
+#include <stdexcept>
 #include"Figure.h"
 #include"Triangle.h"
 #include"Box.h"
@@ -14,6 +16,12 @@
 #include"Romb.h"
 
 
+class MyException: public std::domain_error
+{
+public:
+	using std::domain_error::domain_error;
+};
+
 
 
 
@@ -21,6 +29,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	system("chcp 1251");
+
 	Triangle Tri1(15, 22, 38, 40, 50, 60);
 	rightTr rightTr1(10, 20, 30, 40, 50);
 	isoscelesTr isoscelesTr1(11, 110, 75, 40, 55);

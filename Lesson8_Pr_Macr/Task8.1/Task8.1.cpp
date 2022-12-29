@@ -2,46 +2,37 @@
 //
 
 #include <iostream>
-//#include"Add.h"
+#include "Add.h"
 
-
-
-#define MODE 2
+#define MODE 
 #if !defined MODE
 #error "сообщение о необходимости определить MODE"
 #endif // !
-
-int Add(double num1, double num2)
-{
-    std::cout << "Введите число 1: "; std::cin >> num1;
-    std::cout << std::endl;
-    std::cout << "Введите число 2: "; std::cin >> num2;
-    std::cout << std::endl;
-    return num1+num2;
-}
 
 int main()
 {
     setlocale(LC_ALL, "Russian"); //Корректное отображение Кириллицы
     system("chcp 1251");
 
-    #ifdef MODE 0
-    std::cout << std::endl << "Работаю в режиме тренировки" << std::endl;
-    #endif
+#ifdef MODE 
 
-    #ifdef MODE 1
+    #if MODE  0
+    std::cout << std::endl << "Работаю в режиме тренировки" << std::endl;
+   
+    #elif MODE  1 
     std::cout << std::endl << "Работаю в боевом режиме" << std::endl;
-    
     double num1 = 0;
     double num2 = 0;
-      
-    std::cout << std::endl << "Результат сложения: " << Add (num1,num2) << std::endl;
-     
-    #endif
-
-#if defined MODE!= 0 || defined MODE!= 1
+    std::cout << "Введите число 1: "; std::cin >> num1;
+    std::cout << std::endl;
+    std::cout << "Введите число 2: "; std::cin >> num2;
+    std::cout << std::endl;
+    std::cout << std::endl << "Результат сложения: " << Add::Summa(num1, num2) << std::endl;
+    
+    #else MODE 
     std::cout << std::endl << "Неизвестный режим. Завершение работы" << std::endl;
+    
+ #endif
 
 #endif
-
 }
