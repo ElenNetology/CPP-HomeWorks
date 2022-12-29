@@ -10,6 +10,20 @@ private:
 	int numerator_ = 0;
 	int denominator_ = 0;
 
+	int Nod(int numerator, int denominator)
+	{
+		numerator = abs(numerator);
+		denominator = abs(denominator);
+
+		while (numerator > 0 && denominator > 0)
+
+			if (numerator > denominator) numerator %= denominator;
+			else
+				denominator %= numerator;
+
+		return numerator + denominator;
+	}
+
 public:
 	Fraction() = default ;
 	Fraction(int numerator, int denominator)
@@ -25,6 +39,11 @@ public:
 		t.numerator_ = ((this->numerator_ * other.denominator_) + (other.numerator_ * this->denominator_));
 		t.denominator_ = (this->denominator_ * other.denominator_);
 
+		int gsd = Nod(t.numerator_, t.denominator_);
+
+		t.numerator_ = t.numerator_ / gsd;
+		t.denominator_ = t.denominator_ / gsd;
+
 		return t;
 	}
 
@@ -34,49 +53,80 @@ public:
 
 		t.numerator_ = ((this->numerator_ * other.denominator_) - (other.numerator_ * this->denominator_));
 		t.denominator_ = (this->denominator_ * other.denominator_);
-			
-		return t;
-	}
 
-	Fraction operator * (const Fraction& other) //Умножение 
-	{
-		Fraction t;
+		int gsd = Nod(t.numerator_, t.denominator_);
 
-		t.numerator_ = this->numerator_ * other.numerator_;
-		t.denominator_ = this->denominator_ * other.denominator_;
+		t.numerator_ = t.numerator_ / gsd;
+		t.denominator_ = t.denominator_ / gsd;
 
 		return t;
 	}
 
-	Fraction operator / (const Fraction& other) //Деление 
+	Fraction operator * (const Fraction& other) //Умножение дробей
 	{
 		Fraction t;
 
 		t.numerator_ = this->numerator_ * other.denominator_;
 		t.denominator_ = this->denominator_ * other.numerator_;
-		
+
+		int gsd = Nod(t.numerator_, t.denominator_);
+
+		t.numerator_ = t.numerator_ / gsd;
+		t.denominator_ = t.denominator_ / gsd;
+
 		return t;
 	}
 
-	Fraction& operator++ () 
+	Fraction operator / (const Fraction& other) //Деление дробей
+	{
+		Fraction t;
+
+		t.numerator_ = this->numerator_ * other.denominator_;
+		t.denominator_ = this->denominator_ * other.numerator_;
+
+		int gsd = Nod(t.numerator_, t.denominator_);
+
+		t.numerator_ = t.numerator_ / gsd;
+		t.denominator_ = t.denominator_ / gsd;
+
+		return t;
+	}
+
+	Fraction& operator++ () //Инкремент префиксный 
 	{
 		this->numerator_ = this->numerator_ + this->denominator_;
+
+		int gsd = Nod(this->numerator_, this->denominator_);
+
+		this->numerator_ = this->numerator_ / gsd;
+		this->denominator_ = this->denominator_ / gsd;
+
 		return *this;
 	}
 
-	Fraction operator++ (int) 
+	Fraction operator++ (int) //Инкремент постфиксный 
 	{
 		Fraction t = *this;
 
 		this->numerator_ = this->numerator_ + this->denominator_;
 
+		int gsd = Nod(this->numerator_, this->denominator_);
+
+		this->numerator_ = this->numerator_ / gsd;
+		this->denominator_ = this->denominator_ / gsd;
+
 		return t;
 	}
 
-	Fraction& operator-- () 
+	Fraction& operator-- () //Декремент префиксный 
 	{
 		this->numerator_ = this->numerator_ - this->denominator_;
-		
+
+		int gsd = Nod(this->numerator_, this->denominator_);
+
+		this->numerator_ = this->numerator_ / gsd;
+		this->denominator_ = this->denominator_ / gsd;
+
 		return *this;
 	}
 
@@ -84,7 +134,13 @@ public:
 	{
 		Fraction t = *this;
 
+		//++(*this);
 		this->numerator_ = this->numerator_ - this->denominator_;
+
+		int gsd = Nod(this->numerator_, this->denominator_);
+
+		this->numerator_ = this->numerator_ / gsd;
+		this->denominator_ = this->denominator_ / gsd;
 
 		return t;
 	}
