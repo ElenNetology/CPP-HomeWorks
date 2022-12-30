@@ -11,41 +11,126 @@
 #include"Parallelogram.h"
 #include"Print.h"
 #include"Quadrangle.h"
-#include"Rect.h"
+#include"Rectan.h"
 #include"rightTr.h"
 #include"Romb.h"
-
-
-class MyException: public std::domain_error
-{
-public:
-	using std::domain_error::domain_error;
-};
-
-
+#include "Exception.h"
 
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 	system("chcp 1251");
+	try
+	{
+		Triangle Tri1(15, 22, 38, 40, 50, 60);
+		printinfo(&Tri1);
+		std::cout << "cоздан" << std::endl;
+	}
+	catch (const std::exception& Tr)
+	{
+		std::cerr << "Ошибка создания фигуры. " << std::endl << "Причина: ";
+		std::cerr << Tr.what() << std::endl;
+	}
+	try
+	{
+		rightTr rightTr1(10, 10, 10, 60, 60, 60);
+		printinfo(&rightTr1);
+		std::cout << "cоздан" << std::endl;
+	}
+	catch (const std::exception& rT)
+	{
+		std::cerr << std::endl;
+		std::cerr << "Ошибка создания фигуры. " << std::endl << "Причина: ";
+		std::cerr << rT.what() << std::endl;
+	}
 
-	Triangle Tri1(15, 22, 38, 40, 50, 60);
-	rightTr rightTr1(10, 20, 30, 40, 50);
-	isoscelesTr isoscelesTr1(11, 110, 75, 40, 55);
-	equilateralTr equilateralTr1(111);
-	Quadrangle Quadrangle1(5, 8, 10, 41, 15, 35, 98, 110);
-	Rect Rect1(14, 24);
-	Box Box1(50);
-	Parallelogram Parallelogram1(40, 50, 25, 74);
-	Romb Romb1(14, 24, 34);
-	printinfo(&Tri1);
-	printinfo(&rightTr1);
-	printinfo(&isoscelesTr1);
-	printinfo(&equilateralTr1);
-	printinfo(&Quadrangle1);
-	printinfo(&Rect1);
-	printinfo(&Box1);
-	printinfo(&Parallelogram1);
-	printinfo(&Romb1);
+	try
+	{
+		isoscelesTr isoscelesTr1(11, 45, 110, 75, 40, 55);
+		printinfo(&isoscelesTr1);
+		std::cout << "cоздан" << std::endl;
+	}
+	catch (const std::exception& iT)
+	{
+		std::cerr << std::endl;
+		std::cerr << "Ошибка создания фигуры. " << std::endl << "Причина: ";
+		std::cerr << iT.what() << std::endl;
+	}
+
+	try
+	{
+		equilateralTr equilateralTr1(10, 10, 10, 60, 60, 60);
+		printinfo(&equilateralTr1);
+		std::cout << "cоздан" << std::endl;
+	}
+	catch (const std::exception& eT)
+	{
+		std::cerr << std::endl;
+		std::cerr << "Ошибка создания фигуры. " << std::endl << "Причина: ";
+		std::cerr << eT.what() << std::endl;
+	}
+
+	try
+	{
+		Quadrangle Quadrangle1(5, 8, 10, 41, 15, 35, 98, 110);
+		printinfo(&Quadrangle1);
+		std::cout << "cоздан" << std::endl;
+	}
+	catch (const std::exception& q)
+	{
+		std::cerr << std::endl;
+		std::cerr << "Ошибка создания фигуры. " << std::endl << "Причина: ";
+		std::cerr << q.what() << std::endl;
+	}
+	try
+	{
+		Rectan Rectan1(14, 24, 14, 24, 90, 90, 90, 90);
+		printinfo(&Rectan1);
+		std::cout << "cоздан" << std::endl;
+	}
+	catch (const std::exception& r)
+	{
+		std::cerr << std::endl;
+		std::cerr << "Ошибка создания фигуры. " << std::endl << "Причина: ";
+		std::cerr << r.what() << std::endl;
+	}
+
+	try
+	{
+		Box Box1(50, 45, 55, 40, 60, 70, 50, 90);
+		printinfo(&Box1);
+		std::cout << "cоздан" << std::endl;
+	}
+	catch (const std::exception& s)
+	{
+		std::cerr << std::endl;
+		std::cerr << "Ошибка создания фигуры. " << std::endl << "Причина: ";
+		std::cerr << s.what() << std::endl;
+	}
+
+	try
+	{
+		Parallelogram Parallelogram1(40, 50, 40, 50, 40, 140, 40, 140);
+		printinfo(&Parallelogram1);
+		std::cout << "создан" << std::endl;
+	}
+	catch (const std::exception& s)
+	{
+		std::cerr << std::endl;
+		std::cerr << "Ошибка создания фигуры. " << std::endl << "Причина: ";
+		std::cerr << s.what() << std::endl;
+	}
+	try
+	{
+		Romb Romb1(14, 24, 34, 14, 60, 30, 60, 30);
+		printinfo(&Romb1);
+		std::cout << "создан" << std::endl;
+	}
+	catch (const std::exception& s)
+	{
+		std::cerr << std::endl;
+		std::cerr << "Ошибка создания фигуры. " << std::endl << "Причина: ";
+		std::cerr << s.what() << std::endl;
+	}
 }

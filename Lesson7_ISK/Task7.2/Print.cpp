@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Print.h"
+#include "Exception.h"
+#include <exception>
 
 void printinfo(Figure* figure)
 {

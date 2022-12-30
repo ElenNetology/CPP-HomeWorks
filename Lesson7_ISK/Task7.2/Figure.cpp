@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Figure.h"
+#include "Exception.h"
 
 std::string Figure::getFigure() { return Shape; }
 int Figure::getFSide() { return FSide; }

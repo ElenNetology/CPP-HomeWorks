@@ -1,5 +1,6 @@
 #include "Triangle.h"
 #include "Figure.h"
+#include "Exception.h"
 
 Triangle::Triangle(int sideA, int sideB, int sideC, int angA, int angB, int angC)
 {

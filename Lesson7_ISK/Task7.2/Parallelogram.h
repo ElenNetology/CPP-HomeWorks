@@ -3,6 +3,6 @@
 class Parallelogram : public Quadrangle
 {
 public:
-	Parallelogram(int sideA, int sideB, int angA, int angB);
+	Parallelogram(int sideA, int sideB, int sideC, int sideD, int angA, int angB, int angC, int angD);
 };
 

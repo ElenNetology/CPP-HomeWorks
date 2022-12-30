@@ -128,14 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Box.cpp" />
-    <ClCompile Include="equilateralTr.cpp" />
     <ClCompile Include="Exception.cpp" />
+    <ClCompile Include="equilateralTr.cpp" />
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="isoscelesTr.cpp" />
     <ClCompile Include="Parallelogram.cpp" />
     <ClCompile Include="Print.cpp" />
     <ClCompile Include="Quadrangle.cpp" />
-    <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="Rectan.cpp" />
     <ClCompile Include="rightTr.cpp" />
     <ClCompile Include="Romb.cpp" />
     <ClCompile Include="Task7.2.cpp" />
@@ -150,7 +150,7 @@
     <ClInclude Include="Parallelogram.h" />
     <ClInclude Include="Print.h" />
     <ClInclude Include="Quadrangle.h" />
-    <ClInclude Include="Rect.h" />
+    <ClInclude Include="Rectan.h" />
     <ClInclude Include="rightTr.h" />
     <ClInclude Include="Romb.h" />
     <ClInclude Include="Triangle.h" />

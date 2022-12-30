@@ -66,8 +66,8 @@ public:
 	{
 		Fraction t;
 
-		t.numerator_ = this->numerator_ * other.denominator_;
-		t.denominator_ = this->denominator_ * other.numerator_;
+		t.numerator_ = this->numerator_ * other.numerator_;
+		t.denominator_ = this->denominator_ * other.denominator_;
 
 		int gsd = Nod(t.numerator_, t.denominator_);
 

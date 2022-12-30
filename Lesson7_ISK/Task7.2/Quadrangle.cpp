@@ -1,5 +1,6 @@
 #include "Quadrangle.h"
 #include "Figure.h"
+#include "Exception.h"
 
 Quadrangle::Quadrangle(int sideA, int sideB, int sideC, int sideD, int angA, int angB, int angC, int angD)
 {
@@ -13,4 +14,9 @@ Quadrangle::Quadrangle(int sideA, int sideB, int sideC, int sideD, int angA, int
 	AngB = angB;
 	AngC = angC;
 	AngD = angD;
+
+	if (angA + angB + angC + angD != 360)
+	{
+		throw Exception("Сумма углов не равна 360");
+	}
 }
