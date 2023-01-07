@@ -14,7 +14,7 @@
 #include"Rectan.h"
 #include"rightTr.h"
 #include"Romb.h"
-#include "Exception.h"
+#include"Exception.h"
 
 
 int main()
@@ -23,7 +23,7 @@ int main()
 	system("chcp 1251");
 	try
 	{
-		Triangle Tri1(15, 22, 38, 40, 50, 60);
+		Triangle Tri1(25, 42, 38, 70, 50, 60);
 		printinfo(&Tri1);
 		std::cout << "cоздан" << std::endl;
 	}
