@@ -18,8 +18,9 @@ int main()
 
     #if MODE  0
     std::cout << std::endl << "Работаю в режиме тренировки" << std::endl;
-   
-    #elif MODE  1 
+    #endif
+
+    #if MODE  1 
     std::cout << std::endl << "Работаю в боевом режиме" << std::endl;
     double num1 = 0;
     double num2 = 0;
@@ -28,11 +29,13 @@ int main()
     std::cout << "Введите число 2: "; std::cin >> num2;
     std::cout << std::endl;
     std::cout << std::endl << "Результат сложения: " << Add::Summa(num1, num2) << std::endl;
-    
-    #else MODE 
-    std::cout << std::endl << "Неизвестный режим. Завершение работы" << std::endl;
-    
- #endif
-
+    #endif
 #endif
+
+    #ifndef MODE 
+        std::cout << std::endl << "Неизвестный режим. Завершение работы" << std::endl;
+    #endif
+ 
+
+
 }
