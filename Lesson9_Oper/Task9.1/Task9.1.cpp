@@ -36,16 +36,15 @@ public:
 	{
 		return (double(numerator_) / denominator_) > (double(other.numerator_) / other.denominator_);
 	}
-
+	bool operator < (const Fraction& other) 
+	{
+		return (double(numerator_) / denominator_) < (double(other.numerator_) / other.denominator_);
+	}
 	bool operator >= (const Fraction& other) 
 	{
 		return *this > other || *this == other;
 	}
-	bool operator < (const Fraction& other) 
-	{
-		return ! (*this > other);
-	}
-
+	
 	bool operator <= (const Fraction& other) 
 	{
 		return *this < other || *this == other;
@@ -55,7 +54,7 @@ public:
 int main()
 {
 	Fraction f1(1, 5);
-	Fraction f2(3, 11);
+	Fraction f2(2, 11);
 
 	std::cout << "f1" << ((f1 == f2) ? " == " : " not == ") << "f2" << '\n';
 	std::cout << "f1" << ((f1 != f2) ? " != " : " not != ") << "f2" << '\n';
