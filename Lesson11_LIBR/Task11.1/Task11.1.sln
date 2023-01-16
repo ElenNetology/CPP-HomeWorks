@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StaticLib", "StaticLib\StaticLib.vcxproj", "{88AD20E4-C29E-45A9-87BB-640E4A14D3C6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "task11.1", "StaticLib\task11.1\task11.1.vcxproj", "{515A5F7D-FC51-45D5-95CF-6C4076D991DB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "task11", "StaticLib\task11.1\task11.1.vcxproj", "{515A5F7D-FC51-45D5-95CF-6C4076D991DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
