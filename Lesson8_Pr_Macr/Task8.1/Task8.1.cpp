@@ -1,14 +1,15 @@
 ﻿#include <iostream>
 
- double Add(double num1 =0, double num2 = 0)
-    {
-        return num1 + num2;
-    }
-
 #define MODE 2
 #if !defined MODE
 #error "сообщение о необходимости определить MODE"
 #endif // !
+
+#define MODE 1
+double Add(double num1 =0, double num2 = 0)
+    {
+        return num1 + num2;
+    }
 
 int main()
 {

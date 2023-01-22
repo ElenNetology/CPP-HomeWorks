@@ -2,10 +2,10 @@
 #include <string>
 
 #ifdef DINAMICLIB_EXPORTS
-#define DINAMICLIB_API __declspec(dllexport)
+#define DINAMICLIB_EXPORTS
 
 #else
-#define DINAMICLIB_API __declspec(dllimport)
+#define DINAMICLIB_EXPORTS
 #endif
 
 class Leave
@@ -14,8 +14,8 @@ private:
 	std::string leaving;
 
 public:
-	DINAMICLIB_API Leave(std::string name);
+	 Leave(std::string name);
 
-	DINAMICLIB_API std::string leave();
+	std::string leave();
 };
 
