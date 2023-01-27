@@ -5,11 +5,12 @@
 #error "сообщение о необходимости определить MODE"
 #endif // !
 
-
+#if MODE ==1
 double Add(double num1 =0, double num2 = 0)
     {
         return num1 + num2;
     }
+#endif
 
 int main()
 {
