@@ -20,15 +20,29 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AirTrans.h" />
+    <ClInclude Include="Allterrboots.h" />
+    <ClInclude Include="Broom.h" />
+    <ClInclude Include="Camel.h" />
+    <ClInclude Include="CamelRun.h" />
+    <ClInclude Include="Centaur.h" />
+    <ClInclude Include="Eagle.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="GroundTrans.h" />
+    <ClInclude Include="MagicAir.h" />
     <ClInclude Include="Race.h" />
     <ClInclude Include="Transport.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AirTrans.cpp" />
+    <ClCompile Include="Allterrboots.cpp" />
+    <ClCompile Include="Broom.cpp" />
+    <ClCompile Include="Camel.cpp" />
+    <ClCompile Include="CamelRun.cpp" />
+    <ClCompile Include="Centaur.cpp" />
+    <ClCompile Include="Eagle.cpp" />
     <ClCompile Include="Exception.cpp" />
     <ClCompile Include="GroundTrans.cpp" />
+    <ClCompile Include="MagicAir.cpp" />
     <ClCompile Include="Race.cpp" />
     <ClCompile Include="Transport.cpp" />
   </ItemGroup>

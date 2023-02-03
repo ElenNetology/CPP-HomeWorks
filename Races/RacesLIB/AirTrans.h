@@ -4,6 +4,6 @@
 class AirTrans :
     public Transport
 {
-    AirTrans()
+public: AirTrans(int V, int Ratio);
 };
 

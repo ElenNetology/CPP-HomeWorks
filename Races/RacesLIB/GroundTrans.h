@@ -4,6 +4,7 @@
 class GroundTrans :
     public Transport 
 {
-    GroundTrans(int V, int DrivTime, int Relax, int KoefDistRed);
+public:
+    GroundTrans(int V, int DT, int rest);
 };
 
