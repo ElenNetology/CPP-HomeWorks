@@ -2,11 +2,20 @@
 //
 
 #include <iostream>
+#include <string>
 //#include "Transport.h"
 //#include "AirTrans.h"
 //#include "Exception.h"
 
+struct rase
+{
+public:
+	char type[100];
+	char regtransport[250];
+	int nomer;
+	char time[250];
 
+	} rt, t;
 
 
 
@@ -14,6 +23,9 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	system("chcp 1251");
+	const int N = 7;
+	std::string transport_all[N] = { "Верблюд", "Верблюд-быстроход", "Кентавр", "Ботинки-вездеходы", "Ковер-самолет", "Орел", "Метла"};
+
 	enum RaceTipe {
 		Ground = 1, 
 		Air, 
@@ -34,8 +46,16 @@ int main()
 		std::cout << "\nДолжно быть зарегистрировано хотя бы 2 транспортных средства.\n 1. Зарегистрировать транспорт \n Выберите действие: ";
 		std::cin >> n;
 
+		if (n == 1)
+		for (int i = 1; i < N; i++)
+		{
+			std::cout << i<<'\t' << transport_all[i] << std::endl;
+		}
+		std::cout<< "Выберите транспорт или 0 для завершения регистрации процесса: ";
+		std::cin >> rt.regtransport;
+		std::cout << rt.regtransport << "успешно зарегистрирован!";
 	}
-
+	
 
 
 
