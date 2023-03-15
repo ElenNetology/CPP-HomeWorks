@@ -10,12 +10,11 @@
 struct rase
 {
 public:
-	char type[100];
-	char regtransport[250];
+	std::string type[100];
+	std::string regtransport[250];
 	int nomer;
-	char time[250];
-
-	} rt, t;
+	int time[250];
+	}registr;
 
 
 
@@ -51,9 +50,9 @@ int main()
 		{
 			std::cout << i<<'\t' << transport_all[i] << std::endl;
 		}
-		std::cout<< "Выберите транспорт или 0 для завершения регистрации процесса: ";
-		std::cin >> rt.regtransport;
-		std::cout << rt.regtransport << "успешно зарегистрирован!";
+		std::cout << "Выберите транспорт или 0 для завершения регистрации процесса: ";
+		std::cin >> registr.regtransport;
+		std::cout <<  registr.regtransport<< "успешно зарегистрирован!";
 	}
 	
 
