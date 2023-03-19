@@ -9,16 +9,15 @@
     {
         setlocale(LC_ALL, "Russian");
         std::vector < int > v{ 4, 7, 9, 14, 12 };
-
         auto print = [](const  int& n) {  std::cout << n << ' ';  };
 
         std::cout << "Входные данные: \t ";
-        std::for_each(v.cbegin(), v.cend(), print); std::cout << ' \n ';
-
-        std::for_each(v.begin(), v.end(), [](int& n) { n*3; });
+        std::for_each(v.cbegin(), v.cend(), [](const  int& n) {  std::cout << n << ' ';  });
+        std::cout << std::endl;
 
         std::cout << "\nВыходные данные:\t ";
-        std::for_each(v.cbegin(), v.cend(), print); std::cout << ' \n ';
+        std::for_each(v.cbegin(), v.cend(), [](const auto& n) { if (n % 2 != 0) std::cout << n*3 << ' '; });
+        std::for_each(v.cbegin(), v.cend(), print); std::cout << std::endl;
 
 }
 
