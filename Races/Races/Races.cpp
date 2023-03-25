@@ -14,7 +14,7 @@ public:
 	std::string regtransport[250];
 	int nomer;
 	int time[250];
-	}registr;
+	} registr;
 
 
 

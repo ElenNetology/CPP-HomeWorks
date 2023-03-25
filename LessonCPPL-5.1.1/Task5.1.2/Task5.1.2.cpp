@@ -2,12 +2,11 @@
 //
 
 #include <iostream>
-#include <iterator>
 #include <variant>
 #include <string>
-#include <cstdio>
 
-std::variant <int, std::string, std::vector<int>> get_variant() {
+
+std::variant<int, std::string, std::vector<int>> get_variant() {
 	std::srand(std::time(nullptr));
 	int random_variable = std::rand() % 3;
 
@@ -36,5 +35,5 @@ int main()
 
 
    
-}
+
 
