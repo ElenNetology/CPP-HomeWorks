@@ -7,14 +7,31 @@
 //#include "AirTrans.h"
 //#include "Exception.h"
 
-struct rase
-{
-public:
-	std::string type[100];
-	std::string regtransport[250];
-	int nomer;
-	int time[250];
-	} registr;
+enum class AIRTRANSPORT {
+	BROOM,
+	MAGICAIR,
+	EAGLE,
+	MAXNUM
+};
+
+enum class GROUNDTRANS {
+	CAMELRUN,
+	CENTAUR,
+	CAMEL,
+	ALLTERRBOOTS,
+	MAXNUM
+};
+
+enum class ALLTRANSPORT {
+	CAMELRUN,
+	CENTAUR,
+	CAMEL,
+	ALLTERRBOOTS,
+	BROOM,
+	MAGICAIR,
+	EAGLE,
+	MAXNUM
+};
 
 
 
@@ -30,33 +47,41 @@ int main()
 		Air, 
 		grandARace
 	};
-	int RaceTipe;
-	int Dist; 
-	int n;
+	int RaceTipe = 0;
+	int Dist = 0; 
+	int n = 0;
 	std::cout << "Добро пожаловать в гоночный симулятор!\n 1.Гонка для наземного танспорта.\n 2. Гонка для воздушного транспорта.\n 3. Гонка для наземного и воздушного транспорта.\n Выберите тип гонок: ";
-	
-	std::cin >> RaceTipe;
-	if ((RaceTipe > 0) || (RaceTipe == 1) || (RaceTipe == 2) || (RaceTipe == 3))
-	{
-		std::cout << "Укажите длину дистанции (должна быть положительной:  ";
-		std::cin >> Dist;
-		
-		if (Dist>0)
-		std::cout << "\nДолжно быть зарегистрировано хотя бы 2 транспортных средства.\n 1. Зарегистрировать транспорт \n Выберите действие: ";
+	while (true) {
+		std::cout << "Выберите тип гонки:  ";
 		std::cin >> n;
-
-		if (n == 1)
-		for (int i = 1; i < N; i++)
-		{
-			std::cout << i<<'\t' << transport_all[i] << std::endl;
+		if (std::cin.fail() || n > 3 || n < 0) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Ошибка, повторите попытку" << '\n';
 		}
-		std::cout << "Выберите транспорт или 0 для завершения регистрации процесса: ";
-		std::cin >> registr.regtransport;
-		std::cout <<  registr.regtransport<< "успешно зарегистрирован!";
-	}
-	
-
-
+		else {
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			break;
+		}
+		if (n == 0) {
+			std::cout << "До свидания!\n";
+			exit(0);
+		}
+		int dist = 0;
+		
+		while (true) {
+			std::cout << "Укажите длину дистанции (должна быть положительной:  ";
+			std::cin >> dist;
+			if (std::cin.fail() || dist <= 0) {
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				std::cout << "Ошибка, повторите попытку" << '\n';
+			}
+			else {
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				break;
+			}
+		}
 
 
 

@@ -6,7 +6,7 @@ MagicAir::MagicAir (int V, int Ratio) : AirTrans (V, Ratio)
 {
 	AirTrans::Vehicle = "Ковер-самолет";
     V = 10;
-    int Dist;
+    int Dist = 0;
     if (Dist < 1000)
         Ratio = 1;
     else if (Dist < 5000 && Dist >= 1000)
