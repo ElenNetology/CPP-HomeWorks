@@ -5,26 +5,24 @@
 #include <iostream> 
 #include <vector>
 
-
-
     int main()
     {
         setlocale(LC_ALL, "Russian");
         std::vector < int > v{ 4, 7, 9, 14, 12 };
-            
-
+         
         std::cout << "Входные данные: \t ";
-        std::for_each(v.cbegin(), v.cend(), [](const  int& n) {  std::cout << n << ' ';  });
+        std::for_each(v.cbegin(), v.cend(), [](const int& n) {  std::cout << n << ' ';  });
         std::cout << std::endl;
-        v.at(1) = 21;
-        v.at(2) = 27;
+        std::for_each(v.begin(), v.end(), [&v](int& i)
+         {
+        if (i % 2 != 0)
+        {
+            (i) *= 3;
+        }
+         });
 
         std::cout << "Выходные данные: \t ";
-        std::for_each(v.cbegin(), v.cend(), [](const  int& n) {  std::cout << n << ' ';  });
+        std::for_each(v.cbegin(), v.cend(), [](const int& n) {  std::cout << n << ' ';  });
         std::cout << std::endl;
-
-
-
-
 }
 
