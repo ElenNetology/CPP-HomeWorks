@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 //#include "Transport.h"
 //#include "AirTrans.h"
@@ -82,9 +83,27 @@ int main()
 				break;
 			}
 		}
+		while (true) {
+			std::cout << "Your choice of vehicle => ";
+			std::cin >> n;
+			if (std::cin.fail() || n > max_numb_vehicle || choice < 0) {
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				std::cout << "Erroneous input, try again" << '\n';
+			}
+			else {
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				break;
+			}
+		}
 
-
-
+		switch (choice_race) {
+		case 1: game_race_air(dist); break;
+		case 2: game_race_ground(dist); break;
+		case 3: game_race_air_and_ground(dist); break;
+		}
+		std::cout << std::setw(25) << "Игра окончена!";
+		return 0;
 
 }
 

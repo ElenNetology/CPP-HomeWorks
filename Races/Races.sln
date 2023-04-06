@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Races", "Races\Races.vcxproj", "{DCC44379-DAE1-45B5-BB55-BDF98CEC3767}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RacesLIB", "RacesLIB\RacesLIB.vcxproj", "{61015A52-0E20-4F53-AF68-9931B3E3C464}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TransportLIB", "RacesLIB\RacesLIB.vcxproj", "{61015A52-0E20-4F53-AF68-9931B3E3C464}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RaseLIB", "RaseLIB\RaseLIB.vcxproj", "{2F0481E9-7CB8-48B7-877D-4E1128332F59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{61015A52-0E20-4F53-AF68-9931B3E3C464}.Release|x64.Build.0 = Release|x64
 		{61015A52-0E20-4F53-AF68-9931B3E3C464}.Release|x86.ActiveCfg = Release|Win32
 		{61015A52-0E20-4F53-AF68-9931B3E3C464}.Release|x86.Build.0 = Release|Win32
+		{2F0481E9-7CB8-48B7-877D-4E1128332F59}.Debug|x64.ActiveCfg = Debug|x64
+		{2F0481E9-7CB8-48B7-877D-4E1128332F59}.Debug|x64.Build.0 = Debug|x64
+		{2F0481E9-7CB8-48B7-877D-4E1128332F59}.Debug|x86.ActiveCfg = Debug|Win32
+		{2F0481E9-7CB8-48B7-877D-4E1128332F59}.Debug|x86.Build.0 = Debug|Win32
+		{2F0481E9-7CB8-48B7-877D-4E1128332F59}.Release|x64.ActiveCfg = Release|x64
+		{2F0481E9-7CB8-48B7-877D-4E1128332F59}.Release|x64.Build.0 = Release|x64
+		{2F0481E9-7CB8-48B7-877D-4E1128332F59}.Release|x86.ActiveCfg = Release|Win32
+		{2F0481E9-7CB8-48B7-877D-4E1128332F59}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
