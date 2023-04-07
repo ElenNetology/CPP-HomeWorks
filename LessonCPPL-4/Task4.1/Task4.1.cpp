@@ -1,8 +1,7 @@
 #pragma once
-#include <catch2/catch_test_macros.hpp>
-#include <catch2/catch_session.hpp>
-
 #include <iostream>
+#include "catch2/catch_test_macros.hpp"
+#include "catch2/catch_session.hpp"
 
 struct ListNode
 {
@@ -95,9 +94,15 @@ private:
     unsigned long m_size;
 };
 
+ TEST_CASE("TEST", "[Ts]")
+    {
+        List LT;
+        CHECK(LT.Empty() == 1);
 
+    };
 
 
 int main(int argc, char* argv[]) {
+   
     return Catch::Session().run(argc, argv);
 }
