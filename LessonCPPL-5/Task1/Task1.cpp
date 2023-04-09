@@ -1,23 +1,49 @@
 ﻿// Task1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
-#include<iostream>
+#include <iostream>
+#include <vector>
+#include<string>
 
-template<typename E>
-E square(E x)
+template <class T>
+T square (T num)
 {
-	return x * x;
-}
+	return num * num;
+};
 
-template<typename T>
-void print(T x, T(*fun)(T))
+template <>
+std::string square (std::string num)
 {
-	std::cout << fun(x) << std::endl;
-}
+	return num;
+};
 
-int main()
+template <class S>
+void square (S* v)
 {
-	int x{ 5 };
-	print(x, square<int>);
-	return 0;
-}
+	for (size_t i = 0; i < v->size(); i++)
+	{
+		v->at(i) *= v->at(i);
+	};
+};
+
+void printVector(std::vector<int>* v)
+{
+	for (size_t i = 0; i < v->size(); i++)
+	{
+		std::cout << v->at(i) << "\t";
+	};
+};
+
+
+
+int main() {
+	setlocale(LC_ALL, "ru");
+
+	std::vector <int> v{ 2, 3, 5, 6, 8 };
+
+	printVector(&v);
+
+	square (&v);
+	std::cout << std::endl;
+	printVector(&v);
+};
