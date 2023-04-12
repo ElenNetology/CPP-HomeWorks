@@ -3,107 +3,405 @@
 
 #include <iostream>
 #include <iomanip>
-#include <string>
-//#include "Transport.h"
-//#include "AirTrans.h"
-//#include "Exception.h"
+//#include "../library/RaceLIB/RaceInAir.h"
+//#include "../library/RaceLIB/RaceOnGround.h"
+//#include "../library/RaceLIB/RaceOnGroundAndInAir.h"
 
-enum class AIRTRANSPORT {
-	BROOM,
-	MAGICAIR,
-	EAGLE,
-	MAXNUM
+
+
+enum class TRANSPORT_AIR {
+    BROOMSTICK,
+    MAGIC_CARPET,
+    EAGLE,
+    MAX_NUMB
 };
 
-enum class GROUNDTRANS {
-	CAMELRUN,
-	CENTAUR,
-	CAMEL,
-	ALLTERRBOOTS,
-	MAXNUM
+enum class TRANSPORT_GROUND {
+    CAMEL_IS_FAST,
+    CENTAUR,
+    CAMEL,
+    ALL_TERRAIN_BOOTS,
+    MAX_NUMB
 };
 
-enum class ALLTRANSPORT {
-	CAMELRUN,
-	CENTAUR,
-	CAMEL,
-	ALLTERRBOOTS,
-	BROOM,
-	MAGICAIR,
-	EAGLE,
-	MAXNUM
+enum class TRANSPORT_ALL {
+    CAMEL_IS_FAST,
+    CENTAUR,
+    CAMEL,
+    ALL_TERRAIN_BOOTS,
+    BROOMSTICK,
+    MAGIC_CARPET,
+    EAGLE,
+    MAX_NUMB
 };
 
-
-
-int main()
-{
-	setlocale(LC_ALL, "Russian");
-	system("chcp 1251");
-	const int N = 7;
-	std::string transport_all[N] = { "Верблюд", "Верблюд-быстроход", "Кентавр", "Ботинки-вездеходы", "Ковер-самолет", "Орел", "Метла"};
-
-	enum RaceTipe {
-		Ground = 1, 
-		Air, 
-		grandARace
-	};
-	int RaceTipe = 0;
-	int Dist = 0; 
-	int n = 0;
-	std::cout << "Добро пожаловать в гоночный симулятор!\n 1.Гонка для наземного танспорта.\n 2. Гонка для воздушного транспорта.\n 3. Гонка для наземного и воздушного транспорта.\n Выберите тип гонок: ";
-	while (true) {
-		std::cout << "Выберите тип гонки:  ";
-		std::cin >> n;
-		if (std::cin.fail() || n > 3 || n < 0) {
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "Ошибка, повторите попытку" << '\n';
-		}
-		else {
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			break;
-		}
-		if (n == 0) {
-			std::cout << "До свидания!\n";
-			exit(0);
-		}
-		int dist = 0;
-		
-		while (true) {
-			std::cout << "Укажите длину дистанции (должна быть положительной:  ";
-			std::cin >> dist;
-			if (std::cin.fail() || dist <= 0) {
-				std::cin.clear();
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				std::cout << "Ошибка, повторите попытку" << '\n';
-			}
-			else {
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				break;
-			}
-		}
-		while (true) {
-			std::cout << "Your choice of vehicle => ";
-			std::cin >> n;
-			if (std::cin.fail() || n > max_numb_vehicle || choice < 0) {
-				std::cin.clear();
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				std::cout << "Erroneous input, try again" << '\n';
-			}
-			else {
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				break;
-			}
-		}
-
-		switch (choice_race) {
-		case 1: game_race_air(dist); break;
-		case 2: game_race_ground(dist); break;
-		case 3: game_race_air_and_ground(dist); break;
-		}
-		std::cout << std::setw(25) << "Игра окончена!";
-		return 0;
-
+int greeting_out_and_choice() {
+    std::cout << "Добро пожаловать в гоночный симулятор!\n"
+        << "1.Гонка для наземного транспорта\n 2.Гонка для воздушного транспорта"
+        << "3.Гонка для наземного и воздушного транспорта\n";
+    int choice = 0;
+    while (true) {
+        std::cout << "Выберите тип гонки: ";
+        std::cin >> choice;
+        if (std::cin.fail() || choice > 3 || choice < 0) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
+    }
+      return choice;
 }
 
+int distance_sampling() {
+    int distance = 0;
+    std::cout << "Укажите длину дистанции (должна быть положительной).\n";
+    while (true) {
+        std::cout << "Ваш выбор:  ";
+        std::cin >> distance;
+        if (std::cin.fail() || distance <= 0) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Ошибка ввода, повторите попытку." << '\n';
+        }
+        else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
+    }
+    return distance;
+}
+
+template <typename PTR_RACE>
+void table_name_time_output_only_race_air_and_only_race_ground(const std::shared_ptr<PTR_RACE> race) {
+    std::cout << std::setw(25) << "Таблица участников" << '\n';
+    std::cout << std::setw(20) << "Участники\n" << std::setw(12) << "Время\n";
+    for (int idx_i = 0; idx_i < race->get_size(); ++idx_i) {
+        std::cout <<  std::setw(20) << race->get_name(idx_i);
+        std::cout << std::setw(10) << race->get_time(idx_i) <<'\n';
+    }
+}
+
+template <typename PTR_RACE>
+void table_name_output_only_race_air_and_only_race_ground(const std::shared_ptr<PTR_RACE> race) {
+    std::cout << std::setw(25) << "Таблица участников" << '\n';
+    std::cout << std::setw(20) << "Участники\n";
+    for (int idx_i = 0; idx_i < race->get_size(); ++idx_i) {
+        std::cout <<  std::setw(20) << race->get_name(idx_i) << '\n';
+    }
+}
+
+void table_name_output_all_race(const std::shared_ptr<RaceAirGround> race) {
+    std::cout << std::setw(30) << "Таблица участников" << '\n';
+    std::cout << std::setw(25) << "Участники\n";
+    for (int idx_i = 0; idx_i < race->get_size_air_vec(); ++idx_i) {
+        std::cout <<  std::setw(20) << race->get_name_air_vec(idx_i);
+        std::cout << std::setw(10) << race->get_specilization_air_vec(idx_i) << '\n';
+    }
+    for (int idx_i = 0; idx_i < race->get_size_ground_vec(); ++idx_i) {
+        std::cout << "|" << std::setw(20) << race->get_name_ground_vec(idx_i);
+        std::cout << std::setw(10) << race->get_specilization_ground_vec(idx_i) <<'\n';
+    }
+}
+
+void table_name_time_output_all_race(const std::shared_ptr<RaceAirGround> race) {
+    std::cout << std::setw(30) << "Таблица участников" << '\n';
+    std::cout << std::setw(20) << "Участники" << std::setw(20) << "Время\n";
+    for (int idx_i = 0; idx_i < race->get_size_air_ground_vec(); ++idx_i) {
+        std::cout << "|" << std::setw(20) << race->get_name_air_ground_vec(idx_i) << "|";
+        std::cout << std::setw(20) << race->get_time(idx_i) << "|" << '\n';
+    }
+}
+
+bool exit_register(const int& minimum_number_vehicles) {
+    if (minimum_number_vehicles < 2) {
+        std::cout << "Должно быть зарегистрировано хотя бы 2 транспортных средства.\n";
+        return true;
+    }
+    int choice_again = 1;
+    std::cout << "1. Зарегистрировать транспорт: \n";
+    while (true) {
+        std::cin >> choice_again;
+        if (std::cin.fail() || choice_again > 1 || choice_again < 0) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Ошибка ввода, повторить попытку" << '\n';
+        }
+        else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
+    }
+    if (choice_again == 1)
+        return true;
+    return false;
+}
+
+void cheking_vehicle_selection(int& choice, const int& max_numb_vehicle) {
+    while (true) {
+        std::cout << "Your choice of vehicle => ";
+        std::cin >> choice;
+        if (std::cin.fail() || choice > max_numb_vehicle || choice < 0) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Ошибка ввода, повторить попытку" << '\n';
+        }
+        else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
+    }
+}
+
+bool checking_vectors_emptiness(const std::shared_ptr<RaceAirGround>& race) {
+    if (race->get_size_air_vec() == 0) {
+        std::cout << "Вам необходимо зарегистрироваться хотя бы на одном воздушном транспорте\n";
+        return true;
+    }
+    if (race->get_size_ground_vec() == 0) {
+        std::cout << "Вам необходимо зарегистрироваться хотя бы на одном земном транспорте\n";
+        return true;
+    }
+    return false;
+}
+
+void game_race_air(const int& distance) {
+    int choice = 0;
+    int minimum_number_vehicles = 0;
+    int counter_selected_vehicle[static_cast<int>(TRANSPORT_AIR::MAX_NUMB)]{ 0,0,0 };
+    std::shared_ptr<RaceAir> race = RaceAir::creat_race_in_air(distance);
+    std::cout << "Гонка для воздушного транспорта.\n"
+        << "1.Метла \n2.Ковер-самолет \n3.Орел \n"
+        << "Выберите транспорт или 0 для завершения процесса регистрации.\n";
+    while (true) {
+        cheking_vehicle_selection(choice, static_cast<int>(TRANSPORT_AIR::MAX_NUMB));
+        switch (choice) {
+        case 1: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_AIR::BROOMSTICK)] == 0) {
+            race->set_broomstick();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_AIR::BROOMSTICK)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        case 2: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_AIR::MAGIC_CARPET)] == 0) {
+            race->set_magic_carpet();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_AIR::MAGIC_CARPET)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        case 3: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_AIR::EAGLE)] == 0) {
+            race->set_eagle();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_AIR::EAGLE)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        }
+        if (minimum_number_vehicles == static_cast<int>(TRANSPORT_AIR::MAX_NUMB))
+            break;
+        if (choice == 0) {
+            if (exit_register(minimum_number_vehicles))
+                continue;
+            else
+                break;
+        }
+    }
+    table_name_output_only_race_air_and_only_race_ground(race);
+    race->bubble_sort_transport();
+    table_name_time_output_only_race_air_and_only_race_ground(race);
+}
+
+void game_race_ground(const int& distance) {
+    int choice = 0;
+    int minimum_number_vehicles = 0;
+    int counter_selected_vehicle[static_cast<int>(TRANSPORT_GROUND::MAX_NUMB)]{ 0,0,0 };
+    std::shared_ptr<RaceGround> race = RaceGround::creat_race_on_ground(distance);
+    std::cout << "Зарегистрируйте транспорт для неземной гонки.\n"
+        << "1.Верблюд-быстроход \n2.Кентавр \n3.Верблюд \n4.Ботинки-вездеходы\n"
+        << "Выберите транспорт или 0 для завершения процесса регистрации.\n";
+    while (true) {
+        cheking_vehicle_selection(choice, static_cast<int>(TRANSPORT_GROUND::MAX_NUMB));
+        switch (choice) {
+        case 1: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_GROUND::CAMEL_IS_FAST)] == 0) {
+            race->set_camel_is_fast();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_GROUND::CAMEL_IS_FAST)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        case 2: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_GROUND::CENTAUR)] == 0) {
+            race->set_centaur();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_GROUND::CENTAUR)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        case 3: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_GROUND::CAMEL)] == 0) {
+            race->set_camel();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_GROUND::CAMEL)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        case 4: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_GROUND::ALL_TERRAIN_BOOTS)] == 0) {
+            race->set_all_terrain_boots();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_GROUND::ALL_TERRAIN_BOOTS)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+
+        }
+        if (minimum_number_vehicles == static_cast<int>(TRANSPORT_GROUND::MAX_NUMB))
+            break;
+        if (choice == 0) {
+            if (exit_register(minimum_number_vehicles))
+                continue;
+            else
+                break;
+        }
+    }
+    table_name_output_only_race_air_and_only_race_ground(race);
+    race->bubble_sort_transport();
+    table_name_time_output_only_race_air_and_only_race_ground(race);
+}
+
+void game_race_air_and_ground(const int& distance) {
+    int choice = 0;
+    int minimum_number_vehicles = 0;
+    int counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::MAX_NUMB)]{ 0,0,0 };
+    std::shared_ptr<RaceAirGround> race = RaceAirGround::creat_race_on_ground_in_air(distance);
+    std::cout << "Гонка для наземного и воздушного транспорта.\n"
+        << "1.Верблюд-быстроход \n2.Кентавр \n3.Верблюд \n4.Ботинки-вездеходы\n"
+        << "1.Метла \n2.Ковер-самолет \n3.Орел \n\n"
+        << "Выберите транспорт или 0 для завершения процесса регистрации.\n";
+    while (true) {
+        cheking_vehicle_selection(choice, static_cast<int>(TRANSPORT_ALL::MAX_NUMB));
+        switch (choice) {
+        case 1: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::CAMEL_IS_FAST)] == 0) {
+            race->set_camel_is_fast();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::CAMEL_IS_FAST)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        case 2: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::CENTAUR)] == 0) {
+            race->set_centaur();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::CENTAUR)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        case 3: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::CAMEL)] == 0) {
+            race->set_camel();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::CAMEL)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        case 4: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::ALL_TERRAIN_BOOTS)] == 0) {
+            race->set_all_terrain_boots();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::ALL_TERRAIN_BOOTS)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        case 5: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::BROOMSTICK)] == 0) {
+            race->set_broomstick();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::BROOMSTICK)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        case 6: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::MAGIC_CARPET)] == 0) {
+            race->set_magic_carpet();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::MAGIC_CARPET)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        case 7: if (counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::EAGLE)] == 0) {
+            race->set_eagle();
+            ++minimum_number_vehicles;
+            ++counter_selected_vehicle[static_cast<int>(TRANSPORT_ALL::EAGLE)];
+            break;
+        }
+              else {
+            std::cout << "Вы уже зарегистрировали это транспортное средство\n";
+            break;
+        }
+        }
+        if (minimum_number_vehicles == static_cast<int>(TRANSPORT_ALL::MAX_NUMB))
+            break;
+        if (choice == 0) {
+            if (exit_register(minimum_number_vehicles)) {
+                continue;
+            }
+            else {
+                if (!checking_vectors_emptiness(race)) {
+                    break;
+                }
+                else
+                    continue;
+            }
+        }
+    }
+    table_name_output_all_race(race);
+    race->bubble_sort_transport();
+    table_name_time_output_all_race(race);
+}
+
+
+int main() {
+    int choice_race = greeting_out_and_choice();
+    int distance = distance_sampling();
+    switch (choice_race) {
+    case 1: game_race_air(distance); break;
+    case 2: game_race_ground(distance); break;
+    case 3: game_race_air_and_ground(distance); break;
+    }
+    std::cout << std::setw(25) << "!Game over!";
+    return 0;
+}
