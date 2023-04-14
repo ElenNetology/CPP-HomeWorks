@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
+project(Task4.2)
+add_subdirectory (C:\Program Files\Microsoft Visual Studio\2022\Community\Catch2\build)
+set (SOURCES_EXE Task4.2.cpp) 
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+add_executable(Task4.2 ${SOURCES_EXE} ${HEADERS_LIB})
+target_link_libraries(Task4.2 PRIVATE Catch2::Catch2WithMain)
