@@ -19,8 +19,7 @@ public:
     ListNode* next;
 };
 
-
-classList
+class List
 {
 public:
     List()
@@ -31,22 +30,22 @@ public:
 
  virtual ~List()
  {
- ();
+ Clear();
  delete m_head;
  delete m_tail;
  }
 
-  boolEmpty() { return m_size == 0; }
+  bool Empty() { return m_size == 0; }
 
  unsigned long Size() { return m_size; }
 
- void PushFront(int)
+ void PushFront(int value)
  {
  new ListNode(value, m_head, m_head->next);
  ++m_size;
  }
 
- void PushBack(int)
+ void PushBack(int value)
  {
  new ListNode(value, m_tail->prev, m_tail);
  ++m_size;
@@ -103,7 +102,7 @@ TEST_CASE("TEST_LIST", "[LIST]")
     {
         INFO("Проверка добавления элемента в конец списка PushBack(int value)");
 
-        //Пустой
+        
         CHECK_FALSE(!L1.Empty());
 
         L1.PushBack(55);
@@ -111,7 +110,7 @@ TEST_CASE("TEST_LIST", "[LIST]")
         CHECK(L1.Size() == 1);
 
         L1.PopBack();
-        //Пустой
+       
         CHECK_FALSE(!L1.Empty());
         CHECK(L1.Size() == 0);
 

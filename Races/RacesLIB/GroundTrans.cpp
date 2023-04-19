@@ -1,14 +1,19 @@
 // Класс "Наземный транспорт"
-#include "Transport.h"
 #include "GroundTrans.h"
-#include "Exception.h"
 
-GroundTrans::GroundTrans(int V, int DT, int rest)
-	
-{
-	Vehicle = "Наземный транспорт";
-	V = Speed;
-	DT = DrivTime;
-	rest = Relax;
+std::shared_ptr<Camel> GroundTrans::creat_camel() {
+    return std::make_shared<Camel>();
+}
+
+std::shared_ptr<CamelRun> GroundTrans::creat_camel_run() {
+    return std::make_shared<CamelRun>();
+}
+
+std::shared_ptr<Centaur> GroundTrans::creat_centaur() {
+    return std::make_shared<Centaur>();
+}
+
+std::shared_ptr<Allterrboots> GroundTrans::creat_all_terr_boots() {
+    return std::make_shared<Allterrboots>();
 }
 

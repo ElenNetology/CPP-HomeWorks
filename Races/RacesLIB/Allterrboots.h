@@ -1,10 +1,10 @@
 #pragma once
-#include "GroundTrans.h"
-
-class Allterrboots :
-    public GroundTrans
-{
+#ifndef ALL_TERR_BOOTS_H
+#define ALL_TERR_BOOTS_H
+#include "TVehicleGround.h"
+class Allterrboots : public TVehicleGround {
 public:
-    Allterrboots(int V, int DT, int rest);
+    Allterrboots();
+    double get_update_sleep() const override final;
 };
-
+#endif

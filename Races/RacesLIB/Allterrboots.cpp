@@ -1,14 +1,11 @@
 #include "Allterrboots.h"
 #include "Exception.h"
 
-Allterrboots::Allterrboots(int V, int DT, int rest) : GroundTrans(V, DT, rest)
-{
-	GroundTrans::Vehicle = "Ботинки-вездеходы";
-	V = 6;
-	DT = 60;
-	rest = 10;
-	if (DT >= 60)
-		rest = 10;
-	else if (DT >= 120)
-		rest = 5;
+Allterrboots::Allterrboots() {
+    this->speed = 6;
+    this->time_befor_bedtime = 60;
+    this->sleep_time = 10;
+    this->name = "Ботинки-вездеходы";
+    this->specialization = "наземный";
 }
+double Allterrboots::get_update_sleep() const { return 5; }

@@ -1,16 +1,12 @@
 #include "CamelRun.h"
 #include "Exception.h"
 
-CamelRun::CamelRun(int V, int DT, int rest) : GroundTrans(V, DT, rest)
-{
-	GroundTrans::Vehicle = "Верблюд-быстроход";
-
-	V = 40;
-	DT = 10;
-	if (DT >= 0 && DT <= 19)
-		rest = 5;
-	else if (DT >= 20 && DT <= 29)
-		rest = 6.5;
-	else if (DT >= 30)
-		rest = 8;
+CamelRun::CamelRun() {
+    this->speed = 40;
+    this->time_befor_bedtime = 10;
+    this->sleep_time = 5;
+    this->name = "Верблюд-быстроход";
+    this->specialization = "наземный";
 }
+double CamelRun::get_update_sleep() const { return 6.5; }
+double CamelRun::get_update_sleep_second() const { return 8; }

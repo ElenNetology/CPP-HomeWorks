@@ -1,9 +1,8 @@
 #include "Eagle.h"
-#include "Exception.h"
 
-Eagle::Eagle(int V, int Ratio) : AirTrans (V, Ratio)
-{
-	AirTrans::Vehicle = "Орел";
-    V = 8;
-    Ratio = 0.92;
-    }
+Eagle::Eagle() {
+    this->speed = 8;
+    this->name = "Орел";
+    this->shortening_the_distance = 0.92;
+    this->specialization = "воздушный";
+}

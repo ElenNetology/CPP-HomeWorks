@@ -24,6 +24,7 @@
     <ProjectGuid>{dcc44379-dae1-45b5-bb55-bdf98cec3767}</ProjectGuid>
     <RootNamespace>Races</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Source</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -1,10 +1,9 @@
 #pragma once
-#include "AirTrans.h"
-
-class MagicAir :
-    public AirTrans
-{
+#ifndef MAGIC_AIR_H
+#define MAGIC_AIR_H
+#include "TVehicleAir.h"
+class MagicAir : public TVehicleAir {
 public:
-    MagicAir(int V, int Ratio);
+    MagicAir(const int& distance);
 };
-
+#endif

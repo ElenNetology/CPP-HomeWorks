@@ -1,11 +1,11 @@
 //
 #pragma once
-#include "GroundTrans.h"
-
-class Camel :
-    public GroundTrans
-{
+#ifndef CAMEL_H
+#define CAMEL_H
+#include "TVehicleGround.h"
+class Camel : public TVehicleGround {
 public:
-    Camel(int V, int DT, int rest);
+    Camel();
+    double get_update_sleep() const override final;
 };
-
+#endif

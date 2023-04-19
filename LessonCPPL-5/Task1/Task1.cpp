@@ -17,8 +17,9 @@ std::string square (std::string num)
 	return num;
 };
 
-template <class S>
-void square (S* v)
+template <class T>
+//void square (T* v)
+std::vector<T>& square(std::vector<T>& v)
 {
 	for (size_t i = 0; i < v->size(); i++)
 	{
@@ -34,16 +35,16 @@ void printVector(std::vector<int>* v)
 	};
 };
 
-
-
 int main() {
 	setlocale(LC_ALL, "ru");
+	int x = 5;
+	int y = square(x);
+	std::cout << "Square x = " << y << std::endl;
 
 	std::vector <int> v{ 2, 3, 5, 6, 8 };
-
 	printVector(&v);
 
-	square (&v);
+	std::vector<int>s =	square (v);
 	std::cout << std::endl;
 	printVector(&v);
 };

@@ -1,9 +1,9 @@
 #pragma once
-#include "AirTrans.h"
-class Eagle :
-    public AirTrans
-{
-public: 
-    Eagle(int V, int Ratio);
+#ifndef EAGLE_H
+#define EAGLE_H
+#include "TVehicleAir.h"
+class Eagle : public TVehicleAir {
+public:
+    Eagle();
 };
-
+#endif

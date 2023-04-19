@@ -1,13 +1,14 @@
 //Воздушный транспорт
-#include "Transport.h"
 #include "AirTrans.h"
-#include "Exception.h"
 
-AirTrans::AirTrans(int V, int Ratio)
-
-{
-	Vehicle = "Воздушный транспорт";
-	V = Speed;
-	Ratio = KoefDistRed;
+std::shared_ptr<MagicAir> AirTrans::creat_magic_air(const int& distance) {
+    return std::make_shared<MagicAir>(distance);
 }
+std::shared_ptr<Eagle> AirTrans::creat_eagle() {
+    return std::make_shared<Eagle>();
+}
+std::shared_ptr<Broom> AirTrans::creat_broom(const int& distance) {
+    return std::make_shared<Broom>(distance);
+}
+
 

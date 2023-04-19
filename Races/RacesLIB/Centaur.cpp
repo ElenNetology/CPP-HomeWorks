@@ -1,11 +1,9 @@
 #include "Centaur.h"
-#include "Exception.h"
 
-Centaur::Centaur(int V, int DT, int rest) : GroundTrans(V, DT, rest)
-{
-	GroundTrans::Vehicle = "Кентавр";
-
-	V = 15;
-	DT = 8;
-	rest = 2;
+Centaur::Centaur() {
+    this->speed = 15;
+    this->time_befor_bedtime = 8;
+    this->sleep_time = 2;
+    this->name = "Кентавр";
+    this->specialization = "наземный";
 }

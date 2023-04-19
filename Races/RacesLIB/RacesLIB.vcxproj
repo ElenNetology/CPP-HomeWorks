@@ -29,7 +29,9 @@
     <ClInclude Include="Exception.h" />
     <ClInclude Include="GroundTrans.h" />
     <ClInclude Include="MagicAir.h" />
-    <ClInclude Include="Transport.h" />
+    <ClInclude Include="TVehicle.h" />
+    <ClInclude Include="TVehicleAir.h" />
+    <ClInclude Include="TVehicleGround.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AirTrans.cpp" />
@@ -42,7 +44,8 @@
     <ClCompile Include="Exception.cpp" />
     <ClCompile Include="GroundTrans.cpp" />
     <ClCompile Include="MagicAir.cpp" />
-    <ClCompile Include="Transport.cpp" />
+    <ClCompile Include="TVehicleAir.cpp" />
+    <ClCompile Include="TVehicleGround.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

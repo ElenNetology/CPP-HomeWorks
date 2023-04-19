@@ -1,13 +1,10 @@
 #include "Camel.h"
-#include "Exception.h"
 
-Camel::Camel(int V, int DT, int rest) : GroundTrans(V, DT, rest)
-{
-	GroundTrans::Vehicle = "Верблюд";
-	V = 10;
-	DT = 30;
-	if (DT >= 0 && DT <= 30)
-		rest = 5;
-	else if (DT >= 35)
-		rest = 8;
+Camel::Camel() {
+    this->speed = 10;
+    this->time_befor_bedtime = 30;
+    this->sleep_time = 5;
+    this->name = "Верблюд";
+    this->specialization = "наземный";
 }
+double Camel::get_update_sleep() const { return 6; }

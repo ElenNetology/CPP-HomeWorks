@@ -1,19 +1,16 @@
 // Ковер-самолет
 #include "MagicAir.h"
-#include "Exception.h"
-
-MagicAir::MagicAir (int V, int Ratio) : AirTrans (V, Ratio)
-{
-	AirTrans::Vehicle = "Ковер-самолет";
-    V = 10;
-    int Dist = 0;
-    if (Dist < 1000)
-        Ratio = 1;
-    else if (Dist < 5000 && Dist >= 1000)
-        Ratio = 0.97;
-    else if (Dist < 10000 && Dist >= 5000)
-        Ratio = 0.9;
-    else if (Dist >= 10000)
-        Ratio = 0.95;
+MagicAir::MagicAir(const int& distance) {
+    this->speed = 10;
+    this->name = "Ковёр-самолёт	";
+    this->specialization = "воздушный";
+    if (distance < 1000)
+        this->shortening_the_distance = 1;
+    else if (distance < 5000 && distance >= 1000)
+        this->shortening_the_distance = 0.97;
+    else if (distance < 10000 && distance >= 5000)
+        this->shortening_the_distance = 0.9;
+    else if (distance >= 10000)
+        this->shortening_the_distance = 0.95;
 }
 

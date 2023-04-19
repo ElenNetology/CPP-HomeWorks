@@ -145,11 +145,19 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="RaceAir.h" />
+    <ClInclude Include="RaceAirGround.h" />
+    <ClInclude Include="RaceGround.h" />
     <ClInclude Include="RaceInAir.h" />
+    <ClInclude Include="RaceInGrondInAir.h" />
+    <ClInclude Include="RaceInGround.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RaceAir.cpp" />
+    <ClCompile Include="RaceAirGround.cpp" />
+    <ClCompile Include="RaceGround.cpp" />
     <ClCompile Include="RaceInAir.cpp" />
+    <ClCompile Include="RaceInGrondInAir.cpp" />
+    <ClCompile Include="RaceInGround.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
