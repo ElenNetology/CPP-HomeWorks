@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CArray.cpp" />
     <ClCompile Include="Task2.cpp" />
   </ItemGroup>
   <ItemGroup>

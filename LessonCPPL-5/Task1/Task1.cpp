@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <vector>
-#include<string>
 
 template <class T>
 T square (T num)
@@ -11,27 +10,22 @@ T square (T num)
 	return num * num;
 };
 
-template <>
-std::string square (std::string num)
-{
-	return num;
-};
-
 template <class T>
-//void square (T* v)
-std::vector<T>& square(std::vector<T>& v)
+
+std::vector<T> square(std::vector<T> v)
 {
-	for (size_t i = 0; i < v->size(); i++)
+	for (size_t i = 0; i < v.size(); i++)
 	{
-		v->at(i) *= v->at(i);
+		v.at(i) *= v.at(i);
 	};
+	return v;
 };
 
-void printVector(std::vector<int>* v)
+void printVector(std::vector<int>* vec)
 {
-	for (size_t i = 0; i < v->size(); i++)
+	for (size_t i = 0; i < vec->size(); i++)
 	{
-		std::cout << v->at(i) << "\t";
+		std::cout << vec->at(i) << "\t";
 	};
 };
 
@@ -46,5 +40,5 @@ int main() {
 
 	std::vector<int>s =	square (v);
 	std::cout << std::endl;
-	printVector(&v);
+	printVector(&s);
 };

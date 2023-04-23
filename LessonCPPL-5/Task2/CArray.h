@@ -23,6 +23,28 @@ public:
 		std::cout << this << std::endl;
 	};
 
+	CArray(const CArray& other)
+	{
+		this->SizeRow_ = other.SizeRow_;
+		this->SizeCol_ = other.SizeCol_;
+		arr_ = new T * [this->SizeRow_] {};
+		for (int i = 0; i < this->SizeRow_; i++)
+		{
+			arr_[i] = new T[this->SizeCol_]{};
+		}
+		std::cout << this << std::endl;
+
+		for (size_t i = 0; i < other.SizeRow_; i++)
+		{
+			for (size_t j = 0; j < other.SizeCol_; j++)
+			{
+				this->arr_[i][j] = other.arr_[i][j];
+			}
+		}
+		std::cout << this << std::endl;
+	};
+
+
 	T& operator()(int i, int j)
 	{
 		if (i >= SizeRow_ || i < 0) throw std::out_of_range("out_of_range index i(one)");
@@ -31,36 +53,36 @@ public:
 		return arr_[i][j];
 	};
 
-	class ArrayRow
+	class ArrRow
 	{
 	public:
-		ArrayRow(T* arrayRow_, const int SizeCol) : arrayRow_(arrayRow_), SizeCol_(SizeCol) { }
+		ArrRow(T* arrRow_, const int SizeCol) : arrRow_(arrRow_), SizeCol_(SizeCol) { }
 
 		T& operator[](int i)
 		{
 			if (i >= SizeCol_ || i < 0) throw std::out_of_range("out_of_range index j(two)");
-			return arrayRow_[i];
+			return arrRow_[i];
 		}
 	private:
-		T* arrayRow_;
+		T* arrRow_;
 		int SizeCol_ = 0;
 	};
 
-	ArrayRow operator[](const int i) const
+	ArrRow operator[](const int i) const
 	{
 		if (i >= SizeRow_ || i < 0) throw std::out_of_range("out_of_range index i(one)");
 
-		return ArrayRow(arr_[i], SizeCol_);
+		return ArrRow(arr_[i], SizeCol_);
 	};
 
-	CArray& operator=(CArray& other)
+	CArray& operator=(const CArray& other)
 	{
 		if (this != &other)
 		{
 			SizeCol_ = other.SizeCol_;
 			SizeRow_ = other.SizeRow_;
 
-			delete[] arr_;
+			this->~CArray();
 
 			arr_ = new T * [SizeRow_] {};
 			for (int i = 0; i < SizeRow_; i++)
@@ -73,10 +95,10 @@ public:
 			{
 				for (size_t j = 0; j < SizeCol_; j++)
 				{
-					arr_[i][j] = other.arr_[i][j];
+					this->arr_[i][j] = other.arr_[i][j];
 				}
 			}
-			std::cout << this << " - SmartArray::operator=()\n\n";
+			std::cout << this;
 
 			return *this;
 		};
@@ -85,7 +107,7 @@ public:
 
 	void getSize()
 	{
-		std::cout << "Size Of Array: " << SizeRow_ << " x " << SizeCol_ << std::endl;
+		std::cout << "Размер матрицы: " << SizeRow_ << " x " << SizeCol_ << std::endl;
 	};
 
 	void printArr()
@@ -94,7 +116,7 @@ public:
 		{
 			for (size_t j = 0; j < SizeCol_; j++)
 			{
-				std::cout << arr_[i][j] << '\t';
+				std::cout <<arr_[i][j]<< '\t';
 			}
 			std::cout << std::endl;
 		}
@@ -102,8 +124,12 @@ public:
 
 	~CArray()
 	{
-		delete[] arr_;
-		arr_ = nullptr;
+		for (size_t j = 0; j < this->SizeRow_; j++)
+		{
+			delete[] this->arr_[j];
+		}
+		delete[] this->arr_;
+		this->arr_ = nullptr;
 		std::cout << this << std::endl;
 	}
 };
